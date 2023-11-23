@@ -10,7 +10,6 @@
 #define ull unsigned long long
 #define pii pair<int,int>
 #define fo(i,n) for(int i = 0; i < n; i++)
-#define INT_MAX 2147483647
 using namespace std;
  
 vector <string> list;

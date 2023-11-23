@@ -8,8 +8,6 @@
 #include <conio.h>
 #include <locale.h>
 #include <stdbool.h>
- 
- 
 #define size 40
 #define sizeB 500
 #define sizeC 45
@@ -448,7 +446,7 @@ bool eat_croc(int xc, int yc, int id)
     field[xc][yc] = 'c';
     return false;
 }
-bool sex_monkey(int xm, int ym, int id)
+bool reproduction_monkey(int xm, int ym, int id)
 {
     for (int _ = 0; _ < 20; _++)
     {
@@ -575,7 +573,7 @@ bool sex_monkey(int xm, int ym, int id)
     }
     return false;
 }
-bool sex_croc(int xc, int yc, int id)
+bool reproduction_croc(int xc, int yc, int id)
 {
     for (int _ = 0; _ < 40; _++)
     {
@@ -754,7 +752,7 @@ void monkey_action(int im)
     }
     if (M[im].satiety > 15 && M[im].age >= 300)
     {
-        if (sex_monkey(xm, ym, im))
+        if (reproduction_monkey(xm, ym, im))
             return;
     }
     rand_act_monkey(xm, ym, im);
@@ -771,7 +769,7 @@ void croc_action(int ic)
     }
     if (C[ic].satiety > 8 && C[ic].age >= 600)
     {
-        if (sex_croc(xc, yc, ic))
+        if (reproduction_croc(xc, yc, ic))
             return;
     }
     rand_act_croc(xc, yc, ic);

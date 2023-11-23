@@ -17,7 +17,12 @@ using namespace std;
 #define ro(i,n) for(int i = n - 1; i >= 0; i--)
 #define fr(i,j,n) for(int i = j; i < n; i++)
 #define rf(i,j,n) for(int i=n-1;i>=j;i--)
- 
+void fastio()
+{
+    ios_base::sync_with_stdio(false);
+    cout.tie(0);
+    cin.tie(0);
+}
 struct Node
 {
     int max[10];
@@ -62,7 +67,6 @@ int Max(Node* n)
 void Reboot(Node* n)
 {
     Node* p = n->parent;
-    //cout << p->max[0] << p->max[1] << p->max[2]<<endl;
     while (p != NULL)
     {
         for (int i = 0; i < p->children.size()-1; i++)
@@ -71,9 +75,6 @@ void Reboot(Node* n)
         }
         p = p->parent;
     }
-    /*cout << root->max[0] << root->max[1] << root->max[2]<<endl;
-    cout << root->children[0]->max[0] << root->children[0]->max[1] << root->children[0]->max[2] << endl;
-    cout << root->children[1]->max[0] << root->children[1]->max[1] << root->children[1]->max[2] << endl;*/
 }
 void Split(Node* n)
 {
@@ -152,7 +153,7 @@ void Bypass(Node* n, int level,int h)
 {
     if (p == h)
     {
-        cout << ALF[level - 1]<<" ";
+        cout << (char)('A' + level - 1)<<" ";
     }
     p = level;
     fo(i, n->children.size())

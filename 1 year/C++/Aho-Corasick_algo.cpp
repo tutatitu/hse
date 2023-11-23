@@ -19,8 +19,6 @@ typedef long double ld;
 typedef long long ll;
 typedef unsigned long long ull;
 #define pnn pair <Node*,Node*>
-#define INT_MAX 2147483647
-#define LLONG_MAX 9223372036854775807 
 #define mod 1000000007
 #define p_b push_back
 #define fo(i,n) for(int i = 0; i < n; i++)
