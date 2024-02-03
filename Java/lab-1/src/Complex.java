@@ -42,13 +42,13 @@ public class Complex {
         return new Complex(_real / d, _imaginary / d);
     }
 
-    public String print() {
+    public void print() {
         if (this.imaginary > 0) {
-            return this.real + "+" + this.imaginary + "i";
+            System.out.printf("%.2f+%.2fi\t", this.real, this.imaginary);
         } else if (this.imaginary < 0) {
-            return this.real + "" + this.imaginary + "i";
+            System.out.printf("%.2f%.2fi\t", this.real, this.imaginary);
         } else {
-            return this.real + "";
+            System.out.printf("%8.2f\t", this.real);
         }
     }
 }

@@ -111,9 +111,10 @@ public class Matrix {
     public void print() {
         for (int i = 0; i < this.n; i++) {
             for (int j = 0; j < this.n; j++) {
-                System.out.print(this.get(i, j).print() + " ");
+                this.get(i, j).print();
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
