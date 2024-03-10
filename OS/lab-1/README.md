@@ -5,5 +5,5 @@
 ```shell
 sudo apt install pwgen
 chmod +x lab-1.sh
-./lab-1.sh
+./lab-1.sh <user_count>
 ```
