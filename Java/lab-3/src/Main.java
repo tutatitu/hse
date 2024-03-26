@@ -29,7 +29,7 @@ public class Main {
         try {
             birthday = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT));
         } catch (DateTimeParseException e) {
-            System.out.println("Error: Incorrect date format");
+            System.out.println("Error: Incorrect date format or date doesn't exist");
             return;
         }
 

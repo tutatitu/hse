@@ -26,7 +26,11 @@ public class Person {
 
     private String getAge() {
         int age = Period.between(birthday, LocalDate.now()).getYears();
-        return "Age: " + age;
+        if (age % 10 == 1 && age != 11)
+            return "Age: " + age + " год";
+        else if ((age % 10 == 2 || age % 10 == 3 || age % 10 == 4) && (age < 10 || age > 20))
+            return "Age: " + age + " года";
+        return "Age: " + age + " лет";
     }
 
     public String Parse() {
