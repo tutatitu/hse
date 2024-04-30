@@ -1,5 +1,6 @@
-#include "brute-force.cpp"
-#include "compressed-map.cpp"
+#include "../solutions/brute-force.cpp"
+#include "../solutions/compressed-map.cpp"
+#include "../solutions/segment-tree.cpp"
 #include <chrono>
 #include <iostream>
 #include <string>
@@ -41,11 +42,12 @@ struct Generate {
 
 class Benchmark {
 public:
-    std::vector<int> prepare[3], run[3];
-    std::vector<std::string> solution = {"BruteForce", "CompressedMap", ""};
+    std::vector<ull> prepare[3], run[3];
+    std::vector<std::string> solution = {"BruteForce", "CompressedMap", "SegmentTree"};
 
     Benchmark() {
-        int N[] = {10, 20, 50, 80, 100, 150, 250, 300, 400};
+        int N[] = {10, 20, 50, 80, 100, 150, 250, 300, 400, 450,
+                   500, 600, 700, 800, 900, 1000, 1300, 1500, 2000};
         std::cout << "                                      Prepare\n"
                   << "            ";
         for (int n : N) {
@@ -55,7 +57,7 @@ public:
         for (int i = 0; i < 3; i++) {
             std::cout << '\n'
                       << solution[i] << ' ';
-            for (int time : prepare[i]) {
+            for (ull time : prepare[i]) {
                 std::cout << time << ' ';
             }
         }
@@ -66,7 +68,7 @@ public:
         for (int i = 0; i < 3; i++) {
             std::cout << '\n'
                       << solution[i] << ' ';
-            for (int time : run[i]) {
+            for (ull time : run[i]) {
                 std::cout << time << ' ';
             }
         }
@@ -79,31 +81,44 @@ public:
 
         // prepare
         auto start = std::chrono::steady_clock::now();
-        BruteForce bruteforce = BruteForce(rectangles);
+        BruteForce brute_force = BruteForce(rectangles);
         auto end = std::chrono::steady_clock::now();
-        int prepareBrute = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        ull prepareBrute = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         prepare[0].push_back(prepareBrute);
 
         start = std::chrono::steady_clock::now();
-        CompressedMap compressedmap = CompressedMap(rectangles);
+        CompressedMap compressed_map = CompressedMap(rectangles);
         end = std::chrono::steady_clock::now();
-        int prepareMap = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        ull prepareMap = (ull)std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         prepare[1].push_back(prepareMap);
+
+        start = std::chrono::steady_clock::now();
+        SegmentTree segment_tree = SegmentTree(rectangles);
+        end = std::chrono::steady_clock::now();
+        ull prepareSeg = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        prepare[2].push_back(prepareSeg);
 
         // run
         start = std::chrono::steady_clock::now();
         for (Point &point : points)
-            bruteforce.solve(point);
+            brute_force.solve(point);
         end = std::chrono::steady_clock::now();
-        int runBrute = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        ull runBrute = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         run[0].push_back(runBrute);
 
         start = std::chrono::steady_clock::now();
         for (Point &point : points)
-            compressedmap.solve(point);
+            compressed_map.solve(point);
         end = std::chrono::steady_clock::now();
-        int runMap = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        ull runMap = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         run[1].push_back(runMap);
+
+        start = std::chrono::steady_clock::now();
+        for (Point &point : points)
+            segment_tree.solve(point);
+        end = std::chrono::steady_clock::now();
+        ull runSeg = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        run[2].push_back(runSeg);
     }
 
 private:

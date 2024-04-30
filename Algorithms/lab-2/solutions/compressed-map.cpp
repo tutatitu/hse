@@ -1,4 +1,4 @@
-#include "models.cpp"
+#include "../models/models.cpp"
 #include <set>
 #include <vector>
 
@@ -39,7 +39,7 @@ struct CompressedMap {
                 l = m + 1;
         }
 
-        return l;
+        return l - 1;
     }
 
     void buildMap() {
@@ -57,7 +57,7 @@ struct CompressedMap {
     }
 
     int solve(Point &point) {
-        if (point.x < X[0] || point.y < Y[0])
+        if (point.x < X[0] || point.y < Y[0] || point.x > X[X.size() - 1] || point.y > Y[Y.size() - 1])
             return 0;
 
         Point compressed(lower_bound(X, point.x), lower_bound(Y, point.y));
