@@ -1,0 +1,32 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/animalImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/animal_image"
+            android:scaleType="centerCrop"
+            android:background="#000000"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/animalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:text="@string/animal_name"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

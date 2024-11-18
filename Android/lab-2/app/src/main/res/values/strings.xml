@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lab-2</string>
+    <string name="animal_name">Animal Name</string>
+    <string name="animal_image">Animal Image</string>
+</resources>
